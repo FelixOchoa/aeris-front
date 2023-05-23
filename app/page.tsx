@@ -1,113 +1,125 @@
-import Image from 'next/image'
+"use client";
+import useScroll from "@/hooks/useScroll";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { Slide, Fade } from "react-awesome-reveal";
 
-export default function Home() {
+const HomePage = () => {
+  const { ref, showAnimation } = useScroll();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main className="bg-[#202124] text-white min-h-screen px-20 pt-20">
+      <section className="flex justify-center items-center">
+        <Slide triggerOnce>
+          <div className="flex flex-col">
+            <Fade cascade triggerOnce>
+              <p className="text-[#a8a9ac] uppercase">
+                ¿Qué es la gestión académica?
+              </p>
+              <h1 className="text-4xl w-[450px] mt-5">
+                Transformando la gestión académica con Aeris
+              </h1>
+              <p className="text-[#a8a9ac] mt-10 text-sm w-[500px]">
+                Aeris revoluciona la gestión académica en instituciones
+                educativas con una solución integral y moderna. Simplificamos
+                procesos, optimizamos tareas y ofrecemos una experiencia
+                eficiente para estudiantes, padres y personal educativo.
+                Transformamos la planificación, el seguimiento y la comunicación
+                en el entorno educativo con nuestra plataforma innovadora.
+              </p>
+              <div className="flex gap-10 mt-10">
+                <button className="bg-[#fabd04] text-[#202124] py-3 px-8 rounded-sm font-medium uppercase">
+                  Ver más
+                </button>
+                <button className="bg-[#202124] text-white py-3 px-8 rounded-sm font-medium uppercase border-2 hover:bg-white hover:text-[#202124] transition-all ease-in-out">
+                  Iniciar sesión
+                </button>
+              </div>
+            </Fade>
+          </div>
+        </Slide>
+        <Slide direction="right">
+          <Image
+            src="/images/kidHome.png"
+            width={500}
+            height={500}
+            alt="kid"
+            quality={100}
+            draggable={false}
+            sizes="500px"
+          />
+        </Slide>
+      </section>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <section className="flex flex-col items-center">
+        <h1 className="text-4xl mt-24 mb-10" ref={ref}>
+          Transformando la gestión académica con Aeris
+        </h1>
+        {showAnimation && (
+          <Slide direction="left" triggerOnce>
+            <div
+              className={
+                showAnimation ? "flex mt-10 pb-10 justify-center" : "hidden"
+              }
+            >
+              <div className="flex flex-col border-2 border-[#a8a9ac] items-center w-[400px] p-10 rounded-l-sm">
+                <h2 className="text-2xl">Gestión de estudiantes</h2>
+                <p className="text-[#a8a9ac] mt-5 text-sm">
+                  Aeris simplifica la gestión de estudiantes al organizar de
+                  manera eficiente la información personal, seguimiento
+                  académico y generación de informes. Con Aeris, el seguimiento
+                  del progreso y el rendimiento académico se vuelve más fácil y
+                  efectivo.
+                </p>
+                <Link
+                  href="/platform"
+                  className="self-start pt-4 uppercase underline underline-offset-8"
+                >
+                  Leer más
+                </Link>
+              </div>
+              <div className="flex flex-col border-2 border-[#a8a9ac] border-l-0 border-r-0 items-center w-[400px] p-10">
+                <h2 className="text-2xl">Gestión de materias</h2>
+                <p className="text-[#a8a9ac] mt-5 text-sm">
+                  La gestión de materias en Aeris simplifica la administración y
+                  organización de las asignaturas académicas. Con Aeris, puedes
+                  gestionar de manera eficiente la información, horarios y
+                  asignación de docentes para cada materia. Mejora la
+                  planificación y organización académica en tu institución
+                  educativa con Aeris.
+                </p>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+                <Link
+                  href="/platform"
+                  className="self-start pt-4 uppercase underline underline-offset-8"
+                >
+                  Leer más
+                </Link>
+              </div>
+              <div className="flex flex-col border-2 border-[#a8a9ac] items-center w-[400px] p-10 rounded-r-sm">
+                <h2 className="text-2xl">Gestión de notas</h2>
+                <p className="text-[#a8a9ac] mt-5 text-sm">
+                  La gestión de notas en Aeris simplifica el registro, cálculo y
+                  seguimiento de las calificaciones de los estudiantes. Con
+                  Aeris, puedes gestionar eficientemente las notas, generar
+                  informes detallados y tener un seguimiento actualizado del
+                  desempeño académico. Optimiza la gestión de notas en tu
+                  institución educativa con Aeris.
+                </p>
+                <Link
+                  href="/platform"
+                  className="self-start pt-4 uppercase underline underline-offset-8"
+                >
+                  Leer más
+                </Link>
+              </div>
+            </div>
+          </Slide>
+        )}
+      </section>
     </main>
-  )
-}
+  );
+};
+
+export default HomePage;
