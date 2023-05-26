@@ -79,7 +79,7 @@ const HomePage = () => {
                   Leer más
                 </Link>
               </div>
-              <div className="flex flex-col border-2 border-[#a8a9ac] border-l-0 border-r-0 items-center w-[400px] p-10">
+              <div className="flex flex-col border-2 border-[#a8a9ac] border-l-0 border-r-0 items-center w-[400px] p-10 relative">
                 <h2 className="text-2xl">Gestión de materias</h2>
                 <p className="text-[#a8a9ac] mt-5 text-sm">
                   La gestión de materias en Aeris simplifica la administración y
