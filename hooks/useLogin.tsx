@@ -4,11 +4,11 @@ const useLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleEmail = (e: HTMLInputElement) => {
-    setEmail(e.value);
+  const handleEmail = (e: any) => {
+    setEmail(e.target.value);
   };
-  const handlePassword = (e: HTMLInputElement) => {
-    setPassword(e.value);
+  const handlePassword = (e: any) => {
+    setPassword(e.target.value);
   };
 
   return { email, password, handleEmail, handlePassword };

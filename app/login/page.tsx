@@ -3,13 +3,27 @@ import React from "react";
 import useLogin from "@/hooks/useLogin";
 import { Input } from "@/components/Login/Input";
 import { Slide } from "react-awesome-reveal";
+import { useLoginMutation } from "@/redux/services/User";
 
 const Login = () => {
   const { email, password, handleEmail, handlePassword } = useLogin();
+  const [login, { isSuccess, data }] = useLoginMutation();
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    const loginUser = {
+      email,
+      password,
+    };
+
+    login(loginUser);
+  };
+  console.log(data);
 
   return (
     <main className="flex flex-col items-center">
-      <form className="mt-28 flex flex-col w-1/2">
+      <form className="mt-28 flex flex-col w-1/2" onSubmit={handleSubmit}>
         <Slide direction="up" triggerOnce>
           <h1 className="px-8 text-2xl text-[#202124] font-semibold">
             Bienvenido a Aeris
