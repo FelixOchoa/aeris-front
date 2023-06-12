@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { ProviderRTK } from "@/redux/providers";
-import { NavHomePage } from "@/components/Navigation/HomePage";
+import ProviderRX from "@/redux/provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -15,15 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
         className={inter.className}
         style={{
           minHeight: "100vh",
         }}
       >
-        <NavHomePage />
-        <ProviderRTK>{children}</ProviderRTK>
+        <ProviderRX>{children}</ProviderRX>
       </body>
     </html>
   );

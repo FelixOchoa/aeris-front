@@ -1,17 +1,11 @@
-import userReducer from "./features/userSlice";
-import { configureStore } from "@reduxjs/toolkit";
-import { userApi } from "./services/User";
-import { setupListeners } from "@reduxjs/toolkit/dist/query";
-export const store = configureStore({
-  reducer: {
-    user: userReducer,
-    [userApi.reducerPath]: userApi.reducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([userApi.middleware]),
-});
+import { legacy_createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import RootReducer from "../redux/reducers/rootReducer";
 
-setupListeners(store.dispatch);
+const store = legacy_createStore(
+  RootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export default store;

@@ -16,3 +16,14 @@ export const NavHomePageData = [
     href: "contact",
   },
 ];
+
+export const NavLoggedData = [
+  {
+    title: "Estudiantes",
+    href: "students",
+  },
+  {
+    title: "Profesor",
+    href: "teachers",
+  },
+];

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NavHomePageData } from "@/utils/Navigation/HomePage";
 
-export const NavHomePage = () => {
+export const NavUnLogged = () => {
   return (
     <header>
       <nav className="bg-[#202124] text-white text-sm py-6 px-20 flex justify-between md:gap-10 2xl:justify-center">

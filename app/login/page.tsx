@@ -1,13 +1,21 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import useLogin from "@/hooks/useLogin";
 import { Input } from "@/components/Login/Input";
 import { Slide } from "react-awesome-reveal";
-import { useLoginMutation } from "@/redux/services/User";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "@/redux/actions/authActions";
 
 const Login = () => {
+  useEffect(() => {
+    const isLogin = window.localStorage.getItem("isLogged");
+    if (isLogin) {
+      window.location.href = "/";
+    }
+  }, []);
+
+  const dispatch = useDispatch();
   const { email, password, handleEmail, handlePassword } = useLogin();
-  const [login, { isSuccess, data }] = useLoginMutation();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -16,10 +24,11 @@ const Login = () => {
       email,
       password,
     };
-
-    login(loginUser);
+    dispatch(await setCredentials(loginUser));
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
-  console.log(data);
 
   return (
     <main className="flex flex-col items-center">
