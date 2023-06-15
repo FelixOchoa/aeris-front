@@ -3,7 +3,7 @@ import { User } from "../types/authType";
 
 export const setCredentials = async (user: User) => {
   const { code, data } = await authService.login(user);
-  const { id_user, email, token } = data;
+  const { id_user, email, token, type_user } = data;
 
   if (code === 400) {
     return {
@@ -21,6 +21,7 @@ export const setCredentials = async (user: User) => {
   localStorage.setItem("email", email);
   localStorage.setItem("token", token);
   localStorage.setItem("isLogged", "true");
+  localStorage.setItem("typeUser", type_user);
 
   return {
     type: "SET_CREDENTIALS",
@@ -56,6 +57,7 @@ export const getCurrentUser = () => {
       email: localStorage.getItem("email"),
       token: localStorage.getItem("token"),
       isLogged: localStorage.getItem("isLogged"),
+      typeUser: localStorage.getItem("typeUser"),
     },
   };
 };

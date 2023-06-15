@@ -1,16 +1,13 @@
 "use client";
 import useAuth from "@/hooks/useAuth";
 import { HomePage as Home } from "@/components/HomePage/page";
+import HomePageAdmin from "@/components/HomePage/PageAdmin";
 
 const HomePage = () => {
   const { user } = useAuth();
 
   if (user?.isLogged) {
-    return (
-      <main>
-        <h1>Te has logueado</h1>
-      </main>
-    );
+    return <>{user?.typeUser === "admin" && <HomePageAdmin/>}</>;
   }
 
   return <Home />;
