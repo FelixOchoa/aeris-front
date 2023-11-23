@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    API_AERIS_BACKEND: "http://localhost:3100",
+    API_AERIS_BACKEND: "http://31.220.101.22:3100",
   },
 };
 
